@@ -1,0 +1,19 @@
+#!/bin/bash
+# This is the command to use when running interactive commands
+# eg:
+#   ngi yo
+#   ngi bower install
+
+VERSION="latest"
+if [ -r ~/.config/ngi/settings ]
+then
+    . ~/.config/ngi/settings
+fi
+
+docker run --rm \
+       -it \
+       --volume $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+       -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+       --volume /home/`whoami`/.gitconfig:/root/.gitconfig:ro \
+       --volume "`pwd`:/app" \
+       erikap/angular:$VERSION $@

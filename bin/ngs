@@ -1,0 +1,18 @@
+#!/bin/bash
+# This is the standard command to use when launching an angular server.  Note that
+# the container's host is available at hostname `host` instead of `localhost`.
+# eg:
+#   ngs
+VERSION="latest"
+if [ -r ~/.config/ngi/settings ]
+then
+    . ~/.config/ngi/settings
+fi
+
+docker run --rm \
+       --volume "`pwd`:/app" \
+       -p 9000:9000 \
+       -p 35729:35729 \
+       -p 3000:3000 \
+       --add-host host:`ip addr show docker0 | grep inet | head -n 1 | awk '{ print $2 }' | grep -oP "^[^/]+"` \
+       erikap/angular:$VERSION gulp serve $@

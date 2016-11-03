@@ -6,7 +6,7 @@ RUN apt-get -y update; apt-get -y install wget python build-essential git
 RUN wget -qO- https://deb.nodesource.com/setup_4.x > node_setup.sh
 RUN bash node_setup.sh
 RUN apt-get -y install nodejs \
-    && npm install -g npm typings
-RUN npm install -g angular-cli@1.0.0-beta.19-3
+    && npm install -g npm@3.10.9
+RUN npm install -g typings angular-cli@1.0.0-beta.19-3
 
 WORKDIR /app

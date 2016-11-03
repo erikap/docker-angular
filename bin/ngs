@@ -3,7 +3,7 @@
 # the container's host is available at hostname `host` instead of `localhost`.
 # eg:
 #   ngs
-VERSION="latest"
+VERSION="angular1"
 if [ -r ~/.config/ngi/settings ]
 then
     . ~/.config/ngi/settings

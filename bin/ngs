@@ -3,7 +3,7 @@
 # the container's host is available at hostname `host` instead of `localhost`.
 # eg:
 #   ngs
-VERSION="latest"
+VERSION="v1.0.0-beta.19-3"
 if [ -r ~/.config/ngi/settings ]
 then
     . ~/.config/ngi/settings
@@ -11,8 +11,7 @@ fi
 
 docker run --rm \
        --volume "`pwd`:/app" \
-       -p 9000:9000 \
-       -p 35729:35729 \
-       -p 3000:3000 \
+       -p 4200:4200 \
+       -p 49152:49152 \
        --add-host host:`ip addr show docker0 | grep inet | head -n 1 | awk '{ print $2 }' | grep -oP "^[^/]+"` \
-       erikap/angular:$VERSION gulp serve $@
+       erikap/angular:$VERSION ng serve --host 0.0.0.0 $@

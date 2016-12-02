@@ -10,8 +10,9 @@ then
 fi
 
 docker run --rm \
+       -it \
        --volume "`pwd`:/app" \
        -p 4200:4200 \
        -p 49152:49152 \
        --add-host host:`ip addr show docker0 | grep inet | head -n 1 | awk '{ print $2 }' | grep -oP "^[^/]+"` \
-       erikap/angular:$VERSION ng serve --host 0.0.0.0 $@
+       erikap/angular:$VERSION npm start -- --host 0.0.0.0 $@

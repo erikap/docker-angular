@@ -3,7 +3,7 @@
 # eg:
 #   ngi yo
 #   ngi bower install
-VERSION="1.0.0-beta.25"
+VERSION="1.0.0-beta.26"
 if [ -r ~/.config/ngi/settings ]
 then
     . ~/.config/ngi/settings

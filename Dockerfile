@@ -7,6 +7,6 @@ RUN wget -qO- https://deb.nodesource.com/setup_7.x > node_setup.sh
 RUN bash node_setup.sh
 RUN apt-get -y install nodejs \
     && npm install -g npm@3.10.9
-RUN npm install -g typings @angular/cli@1.0.3
+RUN npm install -g typings @angular/cli@1.0.4
 
 WORKDIR /app
